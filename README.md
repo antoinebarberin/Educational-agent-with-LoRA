@@ -1,3 +1,5 @@
+**IMPORTANT : pour des raisons de confidentialité il faut ajouter le cours au format pdf sur le projet en local sur sa machine pour pouvoir utiliser ce notebook**
+
 🎓 Maths-LoRA-Tutor : Agent Éducatif Mathématique sur Hardware Grand Public
 
 Ce projet explore la création d'un agent conversationnel spécialisé dans l'enseignement des mathématiques de niveau ingénieur (Mathématiques Déterministes).L'objectif principal est de démontrer l'efficacité de la méthode LoRA (Low-Rank Adaptation) pour spécialiser un "petit" modèle de langage (< 1 milliard de paramètres) sur un domaine complexe, en utilisant uniquement des ressources de calcul grand public.
@@ -43,8 +45,9 @@ Lancer le Notebook :
 Ouvrez Agent éducatif avec LoRA.ipynb dans Jupyter ou VS Code. Le code détecte automatiquement l'accélération matérielle (CUDA pour Nvidia, MPS pour Apple Silicon).📂 Structure du Répertoire
 
 Agent éducatif avec LoRA.ipynb : Le cœur du projet (Nettoyage, Entraînement LoRA, RAG, Évaluation).
-.pdf : Le document source que vous devrez ajouter pour l'entraînement (Cours de mathématiques).
+**.pdf : Le document source que vous devrez ajouter pour l'entraînement (Cours de mathématiques).**
 maths_flashcards.json : Le dataset d'instruction généré.
+qwen_instruct_math et model_qwen_trained_with_sw_r=8 : peuvent être utilisés directement pour éviter de refaire l'entraînement avec la méthode LoRA
 
 ⚠️ Limitations
 
