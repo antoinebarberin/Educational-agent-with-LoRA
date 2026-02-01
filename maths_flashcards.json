@@ -1,0 +1,1286 @@
+[
+  {
+    "instruction": "Définis l'espace l^p (petit l).",
+    "output": "L'espace l^p est l'espace vectoriel des suites scalaires x = (x_n) telles que la série des |x_n|^p converge. Il est muni de la norme ||x||_p = (somme |x_n|^p)^(1/p)."
+  },
+  {
+    "instruction": "Quelle est la différence fondamentale entre l^p et L^p ?",
+    "output": "l^p concerne les suites (discret, indices entiers), tandis que L^p concerne les fonctions (continu, intégrale de Lebesgue). L^p est un espace de fonctions quotienté par la relation d'égalité presque partout."
+  },
+  {
+    "instruction": "Énonce l'inégalité de Hölder pour les fonctions.",
+    "output": "Soient f dans L^p et g dans L^q avec 1/p + 1/q = 1. Alors le produit fg est dans L^1 et ||fg||_1 <= ||f||_p * ||g||_q."
+  },
+  {
+    "instruction": "Qu'est-ce que l'inégalité de Minkowski ?",
+    "output": "C'est l'inégalité triangulaire pour les normes L^p : ||f + g||_p <= ||f||_p + ||g||_p pour p >= 1."
+  },
+  {
+    "instruction": "Définis la dérivée faible d'une fonction u.",
+    "output": "v est la dérivée faible de u si pour toute fonction test phi (infiniment dérivable à support compact), l'intégrale de (u * phi') est égale à l'opposé de l'intégrale de (v * phi). Cela généralise l'intégration par parties."
+  },
+  {
+    "instruction": "Pourquoi introduit-on la dérivée faible ?",
+    "output": "Pour pouvoir dériver des fonctions qui ne sont pas continues (comme des fonctions créneaux ou à pics) et donner un sens aux solutions d'EDP qui ne sont pas C^1."
+  },
+  {
+    "instruction": "Définis l'espace de Sobolev H^1(Omega).",
+    "output": "C'est l'espace des fonctions de L^2(Omega) dont toutes les dérivées partielles (au sens faible) appartiennent aussi à L^2(Omega)."
+  },
+  {
+    "instruction": "H^1(Omega) est-il un espace de Hilbert ?",
+    "output": "Oui, car il est muni du produit scalaire (u,v)_H1 = (u,v)_L2 + (grad u, grad v)_L2, qui le rend complet."
+  },
+  {
+    "instruction": "Qu'est-ce que H^1_0(Omega) ?",
+    "output": "C'est le sous-espace de H^1(Omega) constitué des fonctions qui sont 'nulles au bord' (au sens de la trace). C'est l'adhérence des fonctions test dans H^1."
+  },
+  {
+    "instruction": "À quoi sert le Théorème de Rellich ?",
+    "output": "Il énonce que l'injection de H^1 dans L^2 est compacte (pour un domaine borné régulier). C'est crucial pour montrer l'existence de valeurs propres du Laplacien."
+  },
+  {
+    "instruction": "Énonce la formule de Green (Intégration par parties multidimensionnelle).",
+    "output": "Intégrale sur Omega de (Laplacien u * v) = - Intégrale sur Omega de (grad u . grad v) + Intégrale sur le Bord de (derivee normale de u * v)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un problème aux limites elliptique ?",
+    "output": "C'est une EDP stationnaire (ne dépend pas du temps) du type -Laplacien(u) = f, avec des conditions au bord (Dirichlet, Neumann ou Robin)."
+  },
+  {
+    "instruction": "Qu'est-ce que la formulation variationnelle d'une EDP ?",
+    "output": "C'est une reformulation de l'EDP sous forme intégrale faible : trouver u dans un espace V tel que a(u,v) = L(v) pour toute fonction test v dans V."
+  },
+  {
+    "instruction": "Énonce le théorème de Lax-Milgram.",
+    "output": "Si a(u,v) est une forme bilinéaire continue et coercitive sur un espace de Hilbert V, et L est une forme linéaire continue, alors il existe une unique solution u dans V telle que a(u,v) = L(v) pour tout v."
+  },
+  {
+    "instruction": "Que signifie la coercivité d'une forme bilinéaire ?",
+    "output": "a(u,u) >= alpha * ||u||^2. Cela assure que l'opérateur associé est 'défini positif' et garantit l'existence de la solution."
+  },
+  {
+    "instruction": "Qu'est-ce que la condition de Dirichlet ?",
+    "output": "Une condition au bord imposant la valeur de la fonction : u(x) = g(x) sur la frontière."
+  },
+  {
+    "instruction": "Qu'est-ce que la condition de Neumann ?",
+    "output": "Une condition au bord imposant la valeur de la dérivée normale : derivee_normale(u) = h(x) sur la frontière (flux imposé)."
+  },
+  {
+    "instruction": "Principe de la méthode des Différences Finies ?",
+    "output": "Approcher les dérivées d'une fonction par des taux d'accroissement discrets sur une grille régulière (maillage)."
+  },
+  {
+    "instruction": "Donne l'approximation centrée de la dérivée seconde u''(x).",
+    "output": "(u_{i+1} - 2u_i + u_{i-1}) / h^2, où h est le pas d'espace. C'est une approximation d'ordre 2."
+  },
+  {
+    "instruction": "Qu'est-ce que l'erreur de consistance ?",
+    "output": "C'est la différence entre l'opérateur différentiel exact appliqué à la solution exacte et l'opérateur discret. Elle mesure la qualité de l'approximation locale."
+  },
+  {
+    "instruction": "Qu'est-ce que la stabilité d'un schéma numérique ?",
+    "output": "Un schéma est stable si la solution numérique ne diverge pas (reste bornée) lorsque le temps avance ou que le pas de maillage tend vers 0."
+  },
+  {
+    "instruction": "Théorème de Lax (Lien Consistance-Stabilité-Convergence).",
+    "output": "Pour un problème linéaire bien posé, un schéma convergent est équivalent à un schéma consistant et stable."
+  },
+  {
+    "instruction": "Qu'est-ce que la condition CFL (Courant-Friedrichs-Lewy) ?",
+    "output": "Une condition liant le pas de temps dt et le pas d'espace dx (ex: c*dt <= dx) nécessaire pour la stabilité des schémas explicites hyperboliques."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un schéma implicite ?",
+    "output": "Un schéma où l'inconnue au temps n+1 dépend d'elle-même (via un système linéaire à inverser). Ils sont souvent inconditionnellement stables mais plus coûteux à calculer."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un schéma explicite ?",
+    "output": "Un schéma où l'inconnue au temps n+1 se calcule directement à partir des valeurs au temps n. Simple mais soumis à la condition CFL."
+  },
+  {
+    "instruction": "Qu'est-ce que l'analyse de Von Neumann ?",
+    "output": "Une méthode d'analyse de stabilité utilisant la transformée de Fourier discrète. On regarde si le facteur d'amplification des modes propres est inférieur ou égal à 1."
+  },
+  {
+    "instruction": "Qu'est-ce que la dissipation numérique ?",
+    "output": "Un défaut d'un schéma qui agit comme une viscosité artificielle, amortissant les solutions (les amplitudes diminuent alors qu'elles devraient être conservées)."
+  },
+  {
+    "instruction": "Qu'est-ce que la dispersion numérique ?",
+    "output": "Un défaut où les différentes fréquences de la solution se propagent à des vitesses différentes, créant des oscillations parasites."
+  },
+  {
+    "instruction": "Principe de la méthode des Éléments Finis (FEM) ?",
+    "output": "Subdiviser le domaine en éléments géométriques simples (triangles, tétraèdres), approcher la solution par des fonctions polynômes par morceaux, et résoudre la formulation variationnelle discrète."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une fonction de forme (ou fonction de base) en FEM ?",
+    "output": "Une fonction phi_i qui vaut 1 au nœud i et 0 sur tous les autres nœuds. La solution approchée est une combinaison linéaire de ces fonctions."
+  },
+  {
+    "instruction": "Qu'est-ce que la matrice de rigidité ?",
+    "output": "La matrice A de terme général a(phi_j, phi_i), issue de la discrétisation de la forme bilinéaire dans la méthode des éléments finis."
+  },
+  {
+    "instruction": "Qu'est-ce que la matrice de masse ?",
+    "output": "La matrice M de terme général (phi_j, phi_i)_L2, issue de la discrétisation du terme temporel ou identité."
+  },
+  {
+    "instruction": "Qu'est-ce que le Lemme de Céa ?",
+    "output": "Il donne une estimation de l'erreur pour les problèmes variationnels elliptiques : l'erreur de la solution éléments finis est majorée par la meilleure approximation possible dans l'espace discret (à une constante près)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un maillage ?",
+    "output": "La décomposition du domaine spatial Omega en petits sous-domaines élémentaires (triangles, rectangles...) connectés par des nœuds."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de la chaleur ?",
+    "output": "L'EDP parabolique type : derivee_temporelle(u) - Laplacien(u) = 0. Elle modélise la diffusion."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation des ondes ?",
+    "output": "L'EDP hyperbolique type : derivee_seconde_temporelle(u) - c^2 * Laplacien(u) = 0. Elle modélise la propagation."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Poisson ?",
+    "output": "L'EDP elliptique type : -Laplacien(u) = f. Elle modélise des potentiels stationnaires."
+  },
+  {
+    "instruction": "Définis la norme L^inf.",
+    "output": "La norme sup (essentiel) : la plus petite borne majorant la valeur absolue de la fonction presque partout."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une suite de Cauchy ?",
+    "output": "Une suite dont les termes se rapprochent de plus en plus les uns des autres quand n tend vers l'infini. Dans un espace complet, elle converge."
+  },
+  {
+    "instruction": "Qu'est-ce que la complétude ?",
+    "output": "La propriété d'un espace métrique où toute suite de Cauchy converge vers un élément de l'espace."
+  },
+  {
+    "instruction": "Inégalité de Young ?",
+    "output": "ab <= a^p/p + b^q/q pour 1/p+1/q=1. C'est la base pour prouver Hölder."
+  },
+  {
+    "instruction": "Qu'est-ce que le support compact ?",
+    "output": "Une fonction est à support compact si elle est nulle partout sauf sur un ensemble fermé borné."
+  },
+  {
+    "instruction": "Qu'est-ce que D(Omega) ?",
+    "output": "L'espace des fonctions C-infini à support compact inclus dans Omega. Ce sont les fonctions tests pour les distributions."
+  },
+  {
+    "instruction": "Densité de D(Omega) dans L^p ?",
+    "output": "Les fonctions lisses à support compact sont denses dans L^p (pour p fini). On peut approcher toute fonction L^p par une fonction C-infini."
+  },
+  {
+    "instruction": "Qu'est-ce que l'ordre de convergence ?",
+    "output": "Si l'erreur E(h) est majorée par C * h^p, on dit que la méthode est d'ordre p."
+  },
+  {
+    "instruction": "Schéma d'Euler Explicite ?",
+    "output": "Approximation de u'(t) par (u^{n+1} - u^n) / dt. Précis à l'ordre 1."
+  },
+  {
+    "instruction": "Schéma de Crank-Nicolson ?",
+    "output": "Schéma implicite d'ordre 2 en temps pour l'équation de la chaleur, basé sur la moyenne trapézoïdale."
+  },
+  {
+    "instruction": "Qu'est-ce que le nombre de Courant (nu) ?",
+    "output": "nu = c * dt / dx. Paramètre clé pour la stabilité CFL (souvent nu <= 1)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un espace séparable ?",
+    "output": "Un espace qui contient une suite dense dénombrable (comme Q dans R)."
+  },
+  {
+    "instruction": "Qu'est-ce que le dual topologique ?",
+    "output": "L'espace des formes linéaires continues sur un espace vectoriel normé."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un espace réflexif ?",
+    "output": "Un espace qui s'identifie canoniquement à son bidual (le dual du dual). Les L^p sont réflexifs pour 1 < p < infini."
+  },
+  {
+    "instruction": "Qu'est-ce que le Laplacien ?",
+    "output": "L'opérateur div(grad u), soit la somme des dérivées secondes partielles non croisées."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une EDP linéaire ?",
+    "output": "Une équation où l'inconnue u et ses dérivées apparaissent linéairement (puissance 1, pas de produit entre elles)."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Galerkin ?",
+    "output": "Méthode de discrétisation consistant à projeter la formulation variationnelle sur un sous-espace de dimension finie."
+  },
+  {
+    "instruction": "Conditions pour qu'une norme soit issue d'un produit scalaire ?",
+    "output": "Elle doit vérifier l'identité du parallélogramme : ||u+v||^2 + ||u-v||^2 = 2(||u||^2 + ||v||^2)."
+  },
+  {
+    "instruction": "Différence entre convergence simple et uniforme ?",
+    "output": "Uniforme : la vitesse de convergence ne dépend pas de x (le 'tube' se resserre partout en même temps). Simple : dépend de x."
+  },
+  {
+    "instruction": "Théorème de projection sur un convexe fermé ?",
+    "output": "Dans un Hilbert, pour tout x, il existe un unique y dans le convexe fermé K qui minimise la distance ||x-y||."
+  },
+  {
+    "instruction": "Qu'est-ce que l'identité de Parseval ?",
+    "output": "La somme des carrés des coefficients de Fourier est égale à l'intégrale du carré de la fonction (conservation de l'énergie)."
+  },
+  {
+    "instruction": "Quelle est la propriété géométrique majeure de l'espace l^2 ?",
+    "output": "C'est le seul espace l^p qui est un espace de Hilbert, car sa norme est issue d'un produit scalaire vérifiant l'identité du parallélogramme."
+  },
+  {
+    "instruction": "Comment définit-on l'espace L^p (grand L) pour des fonctions ?",
+    "output": "C'est l'espace des fonctions mesurables dont la puissance p-ième de la valeur absolue est intégrable au sens de Lebesgue."
+  },
+  {
+    "instruction": "Pourquoi dit-on que les éléments de L^p ne sont pas des fonctions classiques ?",
+    "output": "Ce sont des classes d'équivalence de fonctions égales presque partout. On ne distingue pas deux fonctions qui diffèrent seulement sur un ensemble de mesure nulle."
+  },
+  {
+    "instruction": "Qu'est-ce que l'espace L^1_loc (localement intégrable) ?",
+    "output": "C'est l'espace des fonctions qui sont intégrables sur tout sous-ensemble compact du domaine, même si elles ne sont pas intégrables sur le domaine entier (ex: f(x)=1 sur R)."
+  },
+  {
+    "instruction": "Qu'appelle-t-on une fonction test en théorie des distributions ?",
+    "output": "Une fonction test est une fonction infiniment dérivable (C-infini) et à support compact inclus dans le domaine d'étude."
+  },
+  {
+    "instruction": "Explique le concept de dérivée faible.",
+    "output": "La dérivée faible permet de dériver des fonctions discontinues en transférant la dérivation sur une fonction test via l'intégration par parties."
+  },
+  {
+    "instruction": "Quelle est la définition formelle de l'espace de Sobolev H^1 ?",
+    "output": "C'est l'espace des fonctions de carré intégrable (L^2) dont toutes les dérivées partielles au sens faible sont aussi de carré intégrable."
+  },
+  {
+    "instruction": "Pourquoi l'espace H^1 est-il crucial pour résoudre des EDP ?",
+    "output": "Il fournit le cadre mathématique (espace de Hilbert) nécessaire pour appliquer le théorème de Lax-Milgram et garantir l'existence de solutions aux problèmes variationnels."
+  },
+  {
+    "instruction": "Qu'est-ce que la densité des fonctions tests dans H^1 ?",
+    "output": "Cela signifie que toute fonction de l'espace H^1 peut être approchée avec une précision arbitraire par une suite de fonctions lisses à support compact (C-infini)."
+  },
+  {
+    "instruction": "Comment interprète-t-on l'espace H^1_0 ?",
+    "output": "C'est le sous-espace de H^1 contenant les fonctions qui s'annulent sur le bord du domaine (Condition de Dirichlet homogène)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'inégalité de Poincaré ?",
+    "output": "Elle affirme que pour une fonction nulle au bord (dans H^1_0) et sur un domaine borné, la norme de la fonction est majorée par la norme de son gradient (à une constante près)."
+  },
+  {
+    "instruction": "Explique la formule de Green.",
+    "output": "C'est l'équivalent multidimensionnel de l'intégration par parties : elle relie l'intégrale du Laplacien sur un volume à l'intégrale de la dérivée normale sur la surface frontière."
+  },
+  {
+    "instruction": "En analyse numérique, qu'est-ce que l'erreur de troncature ?",
+    "output": "C'est l'erreur locale commise par le schéma numérique lorsqu'on y injecte la solution exacte de l'équation différentielle."
+  },
+  {
+    "instruction": "Qu'est-ce que la consistance d'un schéma numérique ?",
+    "output": "Un schéma est consistant si l'erreur de troncature tend vers zéro lorsque les pas de discrétisation (temps et espace) tendent vers zéro."
+  },
+  {
+    "instruction": "Comment définit-on la stabilité L-infini pour un schéma ?",
+    "output": "Un schéma est stable L-infini si la solution numérique reste bornée uniformément par rapport aux données initiales, quel que soit le raffinement du maillage."
+  },
+  {
+    "instruction": "Que dit le théorème de Lax ?",
+    "output": "Pour un problème linéaire bien posé, un schéma converge vers la solution exacte si et seulement si il est à la fois consistant et stable."
+  },
+  {
+    "instruction": "Quel est le principe du maximum discret ?",
+    "output": "Si le terme source est positif et les conditions aux limites sont positives, alors la solution numérique doit rester positive partout."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation des ondes ?",
+    "output": "C'est une équation hyperbolique du second ordre en temps (d2u/dt2 - c^2 Delta u = 0) modélisant la propagation sans diffusion."
+  },
+  {
+    "instruction": "En quoi consiste le schéma Saute-Mouton (Leapfrog) ?",
+    "output": "C'est un schéma explicite à trois niveaux de temps, centré en temps et en espace, utilisé pour résoudre l'équation des ondes sans dissipation numérique."
+  },
+  {
+    "instruction": "Qu'est-ce que la condition CFL ?",
+    "output": "C'est une condition de stabilité nécessaire pour les schémas explicites, imposant que l'information numérique se propage au moins aussi vite que l'information physique (le pas de temps doit être assez petit)."
+  },
+  {
+    "instruction": "Quelle est la méthode des Volumes Finis ?",
+    "output": "C'est une méthode de discrétisation basée sur la forme intégrale des lois de conservation. On divise le domaine en cellules et on calcule les flux d'échange à travers les interfaces."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une loi de conservation ?",
+    "output": "C'est une équation qui exprime que la variation temporelle d'une quantité dans un volume est égale au flux net entrant à travers ses frontières."
+  },
+  {
+    "instruction": "Qu'est-ce que la consistance du flux numérique ?",
+    "output": "Pour que la méthode des volumes finis soit valide, le flux numérique entre deux cellules doit être une approximation consistante du flux physique réel."
+  },
+  {
+    "instruction": "Explique la différence entre 'Cell-centered' et 'Cell-vertex'.",
+    "output": "En 'Cell-centered', les inconnues sont stockées au centre des mailles. En 'Cell-vertex', elles sont stockées aux sommets du maillage."
+  },
+  {
+    "instruction": "Qu'est-ce que le schéma de Lax-Friedrichs ?",
+    "output": "C'est un schéma aux volumes finis stable et monotone, mais très diffusif (ordre 1), obtenu en moyennant les valeurs aux interfaces."
+  },
+  {
+    "instruction": "Quelles sont les propriétés du schéma de Lax-Wendroff ?",
+    "output": "C'est un schéma d'ordre 2, plus précis que Lax-Friedrichs, mais qui peut générer des oscillations parasites (dispersif) près des discontinuités."
+  },
+  {
+    "instruction": "Quel est le principe du schéma Upwind (décentré) ?",
+    "output": "Il consiste à calculer les flux en utilisant l'information venant de 'l'amont' de l'écoulement (selon le signe de la vitesse), ce qui garantit la stabilité pour les équations de transport."
+  },
+  {
+    "instruction": "Qu'est-ce que la Variation Totale (TV) ?",
+    "output": "C'est une mesure des oscillations d'une solution. Un schéma est dit TVD (Total Variation Diminishing) s'il n'augmente pas la variation totale au cours du temps."
+  },
+  {
+    "instruction": "Qu'est-ce que le schéma de Godunov ?",
+    "output": "C'est une méthode de volumes finis qui résout un problème de Riemann exact (choc ou détente) à chaque interface entre les cellules pour calculer les flux."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un limiteur de pente (Slope Limiter) ?",
+    "output": "C'est un mécanisme utilisé dans les schémas d'ordre élevé pour réduire artificiellement l'ordre près des discontinuités et éviter les oscillations (phénomène de Gibbs)."
+  },
+  {
+    "instruction": "Quelle est la formulation variationnelle de l'équation de la chaleur ?",
+    "output": "On multiplie l'équation par une fonction test v, on intègre sur le domaine, et on utilise la formule de Green pour réduire l'ordre des dérivées spatiales."
+  },
+  {
+    "instruction": "Explique le théorème de Lax-Milgram.",
+    "output": "Il garantit l'existence et l'unicité de la solution d'un problème variationnel si la forme bilinéaire associée est continue et coercive sur un espace de Hilbert."
+  },
+  {
+    "instruction": "Qu'est-ce que la coercivité ?",
+    "output": "C'est la propriété d'une forme bilinéaire a(u,u) d'être minorée par la norme de u au carré (à une constante près). Elle assure que l'énergie du système est positive."
+  },
+  {
+    "instruction": "Quelle est la notion de trace dans H^1 ?",
+    "output": "Les fonctions de H^1 ne sont pas définies ponctuellement. La trace est un opérateur continu qui permet de définir proprement la valeur de la fonction sur le bord du domaine."
+  },
+  {
+    "instruction": "En quoi consiste la Méthode des Éléments Finis (FEM) ?",
+    "output": "Elle consiste à approcher la solution variationnelle sur un sous-espace de dimension finie, construit à partir d'un maillage du domaine et de fonctions polynômes par morceaux."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une triangulation admissible ?",
+    "output": "C'est un maillage par des triangles dont l'intersection entre deux éléments est soit vide, soit un sommet, soit une arête entière (pas de nœuds flottants)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un Élément Fini P1 ?",
+    "output": "C'est le plus simple des éléments finis : la solution est approchée par des fonctions affines (polynômes de degré 1) sur chaque triangle, continues aux interfaces."
+  },
+  {
+    "instruction": "Comment sont définies les fonctions de forme (base FEM) ?",
+    "output": "Ce sont des fonctions 'chapeau' qui valent 1 sur un nœud du maillage et 0 sur tous les autres. Elles forment une base de l'espace d'approximation."
+  },
+  {
+    "instruction": "Qu'est-ce que la matrice de rigidité ?",
+    "output": "C'est la matrice issue de la discrétisation du terme laplacien (gradients). Ses coefficients sont les intégrales des produits scalaires des gradients des fonctions de base."
+  },
+  {
+    "instruction": "Qu'est-ce que la matrice de masse ?",
+    "output": "C'est la matrice issue de la discrétisation du terme d'identité (ou temporel). Ses coefficients sont les intégrales des produits des fonctions de base entre elles."
+  },
+  {
+    "instruction": "Comment prend-on en compte les conditions de Dirichlet dans la FEM ?",
+    "output": "On impose directement la valeur des nœuds situés sur le bord du maillage (en modifiant le système linéaire ou par pénalisation)."
+  },
+  {
+    "instruction": "Que dit le Lemme de Céa ?",
+    "output": "L'erreur entre la solution exacte et la solution éléments finis est proportionnelle à la distance entre la solution exacte et le meilleur élément possible du sous-espace d'approximation."
+  },
+  {
+    "instruction": "Comment estime-t-on l'erreur de la méthode FEM P1 ?",
+    "output": "L'erreur en norme H^1 est d'ordre h (taille du maillage), et l'erreur en norme L^2 est généralement d'ordre h^2."
+  },
+  {
+    "instruction": "Qu'est-ce que la formulation variationnelle discrète ?",
+    "output": "C'est la restriction du problème variationnel continu (chercher u dans V) à un sous-espace de dimension finie V_h (chercher u_h dans V_h)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'espace pré-hilbertien ?",
+    "output": "C'est un espace vectoriel muni d'un produit scalaire. S'il est complet pour la norme associée, il devient un espace de Hilbert."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un espace de Banach ?",
+    "output": "C'est un espace vectoriel normé complet (toute suite de Cauchy y converge)."
+  },
+  {
+    "instruction": "Qu'est-ce que le théorème de projection sur un convexe fermé ?",
+    "output": "Dans un espace de Hilbert, il existe un unique point dans un convexe fermé qui minimise la distance à un point donné hors du convexe."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une base hilbertienne ?",
+    "output": "C'est une famille orthonormée dénombrable telle que tout vecteur de l'espace peut s'écrire comme la somme infinie de ses projections sur cette base."
+  },
+  {
+    "instruction": "Qu'est-ce que l'identité de Parseval ?",
+    "output": "Elle affirme que le carré de la norme d'un vecteur est égal à la somme des carrés de ses composantes dans une base hilbertienne (conservation de l'énergie)."
+  },
+  {
+    "instruction": "Qu'est-ce que la différentiabilité au sens de Fréchet ?",
+    "output": "Une fonction est Fréchet-différentiable si elle peut être approchée localement par une application linéaire continue, avec une erreur négligeable devant la norme de l'accroissement."
+  },
+  {
+    "instruction": "Comment définit-on le gradient d'une fonction ?",
+    "output": "C'est le vecteur qui représente la différentielle de la fonction via le produit scalaire de l'espace euclidien."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une dérivée directionnelle ?",
+    "output": "C'est la limite du taux d'accroissement de la fonction dans une direction donnée. Si la fonction est différentiable, c'est le produit scalaire du gradient avec le vecteur direction."
+  },
+  {
+    "instruction": "Qu'est-ce que l'intégration par parties généralisée ?",
+    "output": "C'est une formule qui permet de transférer une dérivée d'une fonction sur l'autre dans une intégrale, en faisant apparaître un terme de bord (flux)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une EDP elliptique ?",
+    "output": "C'est une équation aux dérivées partielles stationnaire (sans temps) qui décrit des états d'équilibre (ex: équation de Poisson, élasticité)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une EDP parabolique ?",
+    "output": "C'est une équation d'évolution décrivant des phénomènes de diffusion irréversibles (ex: équation de la chaleur), lissant les solutions au cours du temps."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une EDP hyperbolique ?",
+    "output": "C'est une équation d'évolution décrivant la propagation d'ondes à vitesse finie (ex: équation des ondes, transport), conservant les discontinuités."
+  },
+  {
+    "instruction": "Qu'est-ce que le maillage dans la méthode des éléments finis ?",
+    "output": "C'est la subdivision géométrique du domaine de calcul en éléments simples (triangles, tétraèdres) connectés par des nœuds, servant de support aux fonctions de base."
+  },
+  {
+    "instruction": "Quelle est l'importance des conditions aux limites ?",
+    "output": "Elles sont indispensables pour garantir l'unicité de la solution d'une EDP. Sans elles, le problème est mal posé et admet une infinité de solutions."
+  },
+  {
+    "instruction": "Qu'est-ce que la régularité d'une solution ?",
+    "output": "C'est le degré de dérivabilité de la solution. Les méthodes variationnelles permettent souvent de trouver des solutions peu régulières (dans H^1 mais pas C^2)."
+  },
+  {
+    "instruction": "Explique la notion de séparabilité d'un espace.",
+    "output": "Un espace est séparable s'il admet une partie dénombrable dense (exemple : Q est dense dans R)."
+  },
+  {
+    "instruction": "Qu'est-ce que la densité d'un sous-espace ?",
+    "output": "Un sous-espace A est dense dans E si tout élément de E peut être approché arbitrairement près par une suite d'éléments de A."
+  },
+  {
+    "instruction": "Qu'est-ce que le dual d'un espace vectoriel normé ?",
+    "output": "C'est l'espace des formes linéaires continues sur cet espace, muni de la norme d'opérateur."
+  },
+  {
+    "instruction": "Quand dit-on qu'un espace est réflexif ?",
+    "output": "Un espace est réflexif si l'injection canonique dans son bidual (dual du dual) est surjective (ex: L^p pour 1<p<inf)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une injection compacte (Théorème de Rellich-Kondrachov) ?",
+    "output": "C'est une injection d'un espace de Sobolev (ex: H^1) dans un espace L^p qui transforme les suites bornées en suites admettant une sous-suite convergente."
+  },
+  {
+    "instruction": "Qu'est-ce que la convergence faible ?",
+    "output": "Une suite converge faiblement si l'image par toute forme linéaire continue converge. C'est moins fort que la convergence en norme."
+  },
+  {
+    "instruction": "Qu'est-ce que le théorème de Banach-Steinhaus ?",
+    "output": "Aussi appelé principe de borne uniforme : une famille d'opérateurs linéaires continus bornée ponctuellement est bornée uniformément."
+  },
+  {
+    "instruction": "Qu'est-ce que le théorème de l'application ouverte ?",
+    "output": "Une application linéaire continue surjective entre deux espaces de Banach est ouverte (l'image d'un ouvert est un ouvert)."
+  },
+  {
+    "instruction": "Explique le théorème du graphe fermé.",
+    "output": "Une application linéaire entre Banach est continue si et seulement si son graphe est fermé."
+  },
+  {
+    "instruction": "Qu'est-ce que le théorème de Hahn-Banach ?",
+    "output": "Il permet de prolonger des formes linéaires continues définies sur un sous-espace à l'espace entier en conservant la norme."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un élément fini de Lagrange ?",
+    "output": "C'est un élément fini où les degrés de liberté sont les valeurs de la fonction en certains points (nœuds)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un élément fini d'Hermite ?",
+    "output": "C'est un élément fini où les degrés de liberté incluent les valeurs de la fonction et de ses dérivées."
+  },
+  {
+    "instruction": "Qu'est-ce que la coordonnée barycentrique ?",
+    "output": "Dans un triangle, ce sont les coordonnées (lambda_1, lambda_2, lambda_3) telles que P = sum lambda_i P_i avec sum lambda_i = 1."
+  },
+  {
+    "instruction": "Qu'est-ce que l'assemblage dans la méthode des éléments finis ?",
+    "output": "C'est l'étape où l'on construit la matrice globale et le vecteur second membre en sommant les contributions élémentaires de chaque triangle."
+  },
+  {
+    "instruction": "Pourquoi utilise-t-on l'intégration numérique (quadrature) en éléments finis ?",
+    "output": "Pour calculer les intégrales des termes de la matrice de rigidité et de masse lorsque les formules exactes sont trop complexes."
+  },
+  {
+    "instruction": "Qu'est-ce que l'erreur d'interpolation ?",
+    "output": "C'est l'erreur commise en remplaçant la fonction exacte u par son interpolé Pi_h(u) sur le maillage."
+  },
+  {
+    "instruction": "Qu'est-ce que le raffinement de maillage ?",
+    "output": "C'est l'action de diviser les éléments du maillage (h -> h/2) pour augmenter la précision de la solution."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un maillage régulier ?",
+    "output": "C'est une famille de maillages où le rapport entre le diamètre du plus grand cercle inscrit et du plus petit cercle circonscrit reste borné quand h tend vers 0."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un flux numérique ?",
+    "output": "C'est une fonction qui approxime le flux physique à l'interface entre deux cellules dans la méthode des volumes finis."
+  },
+  {
+    "instruction": "Qu'est-ce que la conservation au sens discret ?",
+    "output": "C'est le fait que la somme des variations dans toutes les mailles est égale aux flux aux bords du domaine (pas de création/destruction artificielle de masse)."
+  },
+  {
+    "instruction": "Qu'est-ce que le problème de Riemann ?",
+    "output": "C'est un problème de Cauchy pour une loi de conservation avec une donnée initiale discontinue (type marche d'escalier)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une onde de choc ?",
+    "output": "C'est une discontinuité de la solution qui se propage et vérifie les conditions de Rankine-Hugoniot."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une onde de détente (raréfaction) ?",
+    "output": "C'est une solution continue qui relie deux états constants en s'étalant au cours du temps."
+  },
+  {
+    "instruction": "Qu'est-ce que la condition d'entropie ?",
+    "output": "C'est une condition supplémentaire nécessaire pour sélectionner l'unique solution physiquement admissible parmi les solutions faibles (élimine les chocs non physiques)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un schéma monotone ?",
+    "output": "C'est un schéma qui préserve l'ordre : si u <= v initialement, alors u <= v au pas de temps suivant (garantit l'absence d'oscillations)."
+  },
+  {
+    "instruction": "Qu'est-ce que le théorème de Godunov ?",
+    "output": "Il affirme que tout schéma linéaire monotone pour l'advection est au plus d'ordre 1 (il est donc diffusif)."
+  },
+  {
+    "instruction": "Qu'est-ce que la viscosité artificielle ?",
+    "output": "C'est un terme de diffusion ajouté numériquement (souvent implicitement par le schéma, comme dans Lax-Friedrichs) pour stabiliser la solution."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un schéma TVD (Total Variation Diminishing) ?",
+    "output": "C'est un schéma non-linéaire qui n'augmente pas la variation totale de la solution, évitant ainsi les oscillations parasites."
+  },
+  {
+    "instruction": "Qu'est-ce que le schéma de Roe ?",
+    "output": "C'est un solveur de Riemann approché linéarisé, plus rapide que Godunov exact mais parfois moins robuste (chocs non entropiques)."
+  },
+  {
+    "instruction": "Qu'est-ce que le schéma MUSCL ?",
+    "output": "Monotonic Upstream-centered Scheme for Conservation Laws : une technique pour atteindre l'ordre 2 en volumes finis en reconstruisant des pentes par morceaux dans chaque cellule."
+  },
+  {
+    "instruction": "Qu'est-ce que l'ordre d'un schéma en temps ?",
+    "output": "C'est la puissance p telle que l'erreur globale est proportionnelle à (Delta t)^p."
+  },
+  {
+    "instruction": "Qu'est-ce que l'ordre d'un schéma en espace ?",
+    "output": "C'est la puissance q telle que l'erreur est proportionnelle à h^q."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode des lignes ?",
+    "output": "C'est une approche où l'on discrétise d'abord en espace pour obtenir un système d'EDO, que l'on résout ensuite par un schéma temporel (Runge-Kutta, etc.)."
+  },
+  {
+    "instruction": "Qu'est-ce que le schéma de Newmark ?",
+    "output": "C'est une famille de schémas temporels utilisée pour la dynamique des structures (équation des ondes) permettant de contrôler l'amortissement numérique."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de splitting (ou pas fractionnaire) ?",
+    "output": "C'est une méthode où l'on résout successivement les différents opérateurs d'une EDP (ex: advection puis diffusion) sur un pas de temps."
+  },
+  {
+    "instruction": "Qu'est-ce que le conditionnement d'une matrice ?",
+    "output": "C'est le rapport entre la plus grande et la plus petite valeur propre (pour une matrice symétrique). Il régit la vitesse de convergence des méthodes itératives."
+  },
+  {
+    "instruction": "Pourquoi utilise-t-on le préconditionnement ?",
+    "output": "Pour réduire le conditionnement de la matrice du système linéaire et accélérer la convergence des solveurs itératifs (Gradient Conjugué, GMRES)."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode du Gradient Conjugué ?",
+    "output": "C'est une méthode itérative efficace pour résoudre des systèmes linéaires symétriques définis positifs."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de transport ?",
+    "output": "L'EDP hyperbolique du premier ordre : du/dt + c du/dx = 0, modélisant l'advection pure."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Burgers ?",
+    "output": "Une EDP non-linéaire modèle (du/dt + u du/dx = nu d2u/dx2) combinant advection et diffusion (ou chocs si nu=0)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Schrödinger ?",
+    "output": "L'équation fondamentale de la mécanique quantique, qui est une EDP complexe de type diffusion mais dispersive (i du/dt + Delta u = 0)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Stokes ?",
+    "output": "Une version linéarisée des équations de Navier-Stokes pour les écoulements très visqueux (Re << 1)."
+  },
+  {
+    "instruction": "Qu'est-ce que le théorème de divergence (Ostrogradsky) ?",
+    "output": "L'intégrale de la divergence d'un champ sur un volume est égale au flux de ce champ à travers la surface bordant ce volume."
+  },
+  {
+    "instruction": "Qu'est-ce que la formule de Stokes (rotationnel) ?",
+    "output": "L'intégrale du rotationnel d'un champ sur une surface est égale à la circulation du champ sur le bord de cette surface."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une norme équivalente ?",
+    "output": "Deux normes sont équivalentes si elles définissent la même topologie (les mêmes suites convergentes). En dimension finie, toutes les normes sont équivalentes."
+  },
+  {
+    "instruction": "Qu'est-ce que la convergence uniforme ?",
+    "output": "La convergence en norme L-infini (sup) : la suite de fonctions s'approche uniformément de la limite sur tout le domaine."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un espace complet ?",
+    "output": "Un espace métrique où toute suite de Cauchy converge."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un opérateur compact ?",
+    "output": "Un opérateur linéaire qui transforme les bornés en ensembles relativement compacts (dont l'adhérence est compacte)."
+  },
+  {
+    "instruction": "Qu'est-ce que le spectre d'un opérateur ?",
+    "output": "L'ensemble des scalaires lambda tels que (A - lambda I) n'est pas inversible (généralisation des valeurs propres en dimension infinie)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'alternative de Fredholm ?",
+    "output": "Un résultat sur la résolubilité des équations linéaires compactes : soit l'équation a une solution unique pour tout second membre, soit l'équation homogène a des solutions non nulles."
+  },
+  {
+    "instruction": "Qu'est-ce que l'erreur d'arrondi ?",
+    "output": "L'erreur due à la représentation finie des nombres en machine (virgule flottante)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'arithmétique flottante ?",
+    "output": "Un système de représentation des nombres réels sur ordinateur utilisant une mantisse et un exposant."
+  },
+  {
+    "instruction": "Qu'est-ce que la norme matricielle subordonnée ?",
+    "output": "La norme induite sur les matrices par une norme vectorielle : ||A|| = sup ||Ax|| / ||x||."
+  },
+  {
+    "instruction": "Qu'est-ce que le rayon spectral ?",
+    "output": "Le maximum des modules des valeurs propres d'une matrice."
+  },
+  {
+    "instruction": "Quelle est la condition de convergence d'une méthode itérative stationnaire ?",
+    "output": "La méthode converge si et seulement si le rayon spectral de la matrice d'itération est strictement inférieur à 1."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Jacobi ?",
+    "output": "Une méthode itérative où l'on utilise la diagonale de la matrice pour mettre à jour les inconnues."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Gauss-Seidel ?",
+    "output": "Une méthode itérative où l'on utilise la partie triangulaire inférieure (diagonale incluse) pour la mise à jour, utilisant immédiatement les nouvelles valeurs."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de relaxation (SOR) ?",
+    "output": "Une amélioration de Gauss-Seidel introduisant un paramètre de relaxation omega pour accélérer la convergence."
+  },
+  {
+    "instruction": "Qu'est-ce que le lemme de Riemann-Lebesgue ?",
+    "output": "La transformée de Fourier d'une fonction intégrable tend vers 0 à l'infini."
+  },
+  {
+    "instruction": "Qu'est-ce que la convolution ?",
+    "output": "Une opération mathématique (f * g) qui produit une troisième fonction exprimant comment la forme de l'une est modifiée par l'autre."
+  },
+  {
+    "instruction": "Explique le principe du schéma de Crank-Nicolson.",
+    "output": "C'est un schéma de résolution d'EDP paraboliques (comme la chaleur), implicite, d'ordre 2 en temps et en espace, inconditionnellement stable."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une erreur de troncature locale ?",
+    "output": "C'est l'erreur commise par le schéma numérique sur un seul pas de temps, supposant que la solution au pas précédent était exacte."
+  },
+  {
+    "instruction": "Quelle est la différence entre erreur locale et erreur globale ?",
+    "output": "L'erreur locale est l'erreur sur un pas, l'erreur globale est l'accumulation de ces erreurs sur tout l'intervalle de temps."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un problème bien posé au sens de Hadamard ?",
+    "output": "Un problème est bien posé si une solution existe, est unique, et dépend continûment des données initiales."
+  },
+  {
+    "instruction": "Pourquoi l'équation de la chaleur a-t-elle un effet régularisant ?",
+    "output": "Parce que la solution devient instantanément C-infini pour t > 0, même si la donnée initiale est discontinue."
+  },
+  {
+    "instruction": "Qu'est-ce que la vitesse de propagation finie dans l'équation des ondes ?",
+    "output": "Une perturbation à l'instant t=0 en un point x0 n'affectera le point x qu'après un temps t >= |x-x0|/c."
+  },
+  {
+    "instruction": "Qu'est-ce que le domaine de dépendance ?",
+    "output": "Pour un point (x,t), c'est l'ensemble des points initiaux qui peuvent influencer la valeur de la solution en (x,t)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une condition aux limites de Robin ?",
+    "output": "C'est une condition mixte qui lie la valeur de la fonction et sa dérivée normale sur le bord : alpha u + beta du/dn = g."
+  },
+  {
+    "instruction": "Qu'est-ce que le pas de temps critique ?",
+    "output": "Dans un schéma explicite conditionnellement stable, c'est la valeur maximale du pas de temps delta_t pour laquelle le schéma reste stable."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode des caractéristiques ?",
+    "output": "Une méthode pour résoudre les EDP hyperboliques du premier ordre en suivant les courbes le long desquelles l'EDP se réduit à une EDO."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un choc de raréfaction ?",
+    "output": "Un type de discontinuité non physique qui viole la condition d'entropie (la densité diminue à travers le choc), souvent exclu par les bons schémas."
+  },
+  {
+    "instruction": "Qu'est-ce que le flux de Godunov ?",
+    "output": "C'est le flux numérique obtenu en résolvant exactement le problème de Riemann aux interfaces entre cellules."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de capture de choc ?",
+    "output": "Une méthode numérique capable de représenter des discontinuités (chocs) sans avoir à les suivre explicitement par maillage mobile."
+  },
+  {
+    "instruction": "Qu'est-ce que l'ordre de convergence d'une méthode FEM ?",
+    "output": "C'est la vitesse à laquelle l'erreur ||u - u_h|| tend vers 0 en fonction de la taille h du maillage (ex: O(h^2) pour P1 en norme L2)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'assemblage de la matrice de rigidité ?",
+    "output": "Le processus consistant à parcourir tous les éléments du maillage pour ajouter leurs contributions locales à la matrice globale du système."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un nœud esclave (ou pendant) ?",
+    "output": "Dans un maillage avec raffinement local (non conforme), c'est un nœud situé au milieu d'une arête d'un élément voisin plus grand."
+  },
+  {
+    "instruction": "Qu'est-ce que la triangulation de Delaunay ?",
+    "output": "Une triangulation telle que le cercle circonscrit à chaque triangle ne contient aucun autre sommet du maillage. Elle maximise les angles minimaux."
+  },
+  {
+    "instruction": "Pourquoi préfère-t-on les triangles 'bien formés' en FEM ?",
+    "output": "Parce que les triangles très plats (angles proches de 0 ou 180) dégradent le conditionnement de la matrice et la précision de l'interpolation."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Galerkin discontinue (DG) ?",
+    "output": "Une méthode d'éléments finis où l'on n'impose pas la continuité de la solution entre les éléments, combinant flexibilité des volumes finis et précision des éléments finis."
+  },
+  {
+    "instruction": "Qu'est-ce que l'erreur a posteriori ?",
+    "output": "Une estimation de l'erreur calculée après avoir trouvé la solution numérique, souvent utilisée pour guider l'adaptation de maillage."
+  },
+  {
+    "instruction": "Qu'est-ce que l'adaptation de maillage h-adaptative ?",
+    "output": "Une technique où l'on divise ou fusionne des éléments du maillage là où l'erreur estimée est grande ou faible."
+  },
+  {
+    "instruction": "Qu'est-ce que l'adaptation p-adaptative ?",
+    "output": "Une technique où l'on augmente le degré polynomial des fonctions de forme sur certains éléments pour améliorer la précision."
+  },
+  {
+    "instruction": "Qu'est-ce que la matrice de préconditionnement Jacobi ?",
+    "output": "Une matrice diagonale contenant les inverses des éléments diagonaux de la matrice du système, utilisée pour accélérer la convergence."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode du gradient conjugué préconditionné (PCG) ?",
+    "output": "La version accélérée du gradient conjugué utilisant une matrice de préconditionnement pour réduire le nombre d'itérations."
+  },
+  {
+    "instruction": "Qu'est-ce que le stockage creux (Sparse matrix storage) ?",
+    "output": "Une méthode pour stocker uniquement les coefficients non nuls d'une matrice, essentielle pour les grands systèmes FEM."
+  },
+  {
+    "instruction": "Qu'est-ce que le format CSR (Compressed Sparse Row) ?",
+    "output": "Un format de stockage creux populaire utilisant trois tableaux : valeurs, indices de colonnes, et pointeurs de début de ligne."
+  },
+  {
+    "instruction": "Qu'est-ce que la factorisation de Cholesky ?",
+    "output": "Une méthode directe pour résoudre Ax=b quand A est symétrique définie positive, en écrivant A = L L^T."
+  },
+  {
+    "instruction": "Qu'est-ce que la factorisation LU ?",
+    "output": "Une méthode directe pour résoudre Ax=b en écrivant A = L U (Lower, Upper triangular)."
+  },
+  {
+    "instruction": "Quelle est la complexité de la résolution d'un système triangulaire ?",
+    "output": "O(N^2) en général, mais O(N) pour les matrices bandes ou très creuses typiques des EDP 1D."
+  },
+  {
+    "instruction": "Qu'est-ce que le phénomène de Gibbs ?",
+    "output": "Des oscillations parasites apparaissant près d'une discontinuité lorsqu'on l'approxime par une série de Fourier tronquée ou un schéma d'ordre élevé."
+  },
+  {
+    "instruction": "Qu'est-ce que la transformée de Fourier Discrète (DFT) ?",
+    "output": "L'équivalent discret de la transformée de Fourier, transformant une séquence de N points temporels en N points fréquentiels."
+  },
+  {
+    "instruction": "Qu'est-ce que la FFT (Fast Fourier Transform) ?",
+    "output": "Un algorithme rapide pour calculer la DFT en O(N log N) opérations au lieu de O(N^2)."
+  },
+  {
+    "instruction": "Qu'est-ce que le repliement de spectre (Aliasing) ?",
+    "output": "Un artefact où les hautes fréquences sont mal interprétées comme des basses fréquences lors de l'échantillonnage."
+  },
+  {
+    "instruction": "Qu'est-ce que la fréquence de Nyquist ?",
+    "output": "La fréquence maximale qu'on peut représenter correctement avec un taux d'échantillonnage donné (moitié de la fréquence d'échantillonnage)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation d'Euler pour les fluides ?",
+    "output": "L'équation de conservation de la quantité de mouvement pour un fluide non visqueux."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Navier-Stokes ?",
+    "output": "L'équation décrivant le mouvement des fluides visqueux, incluant les termes de convection, diffusion et pression."
+  },
+  {
+    "instruction": "Qu'est-ce que le nombre de Reynolds ?",
+    "output": "Un nombre adimensionnel (Re) mesurant le rapport entre forces d'inertie et forces visqueuses."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un écoulement laminaire ?",
+    "output": "Un écoulement ordonné, en couches parallèles, typique des faibles nombres de Reynolds."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un écoulement turbulent ?",
+    "output": "Un écoulement chaotique, avec tourbillons, typique des hauts nombres de Reynolds."
+  },
+  {
+    "instruction": "Qu'est-ce que la couche limite ?",
+    "output": "La fine zone près d'une paroi où les effets de viscosité sont dominants et la vitesse passe de 0 à la vitesse du flux libre."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode multipôle rapide (FMM) ?",
+    "output": "Un algorithme pour accélérer le calcul des interactions à longue portée (type gravitation ou électrostatique) en N corps."
+  },
+  {
+    "instruction": "Qu'est-ce que l'intégration symplectique ?",
+    "output": "Des schémas d'intégration temporelle qui préservent la structure géométrique (symplectique) des équations hamiltoniennes, assurant la conservation de l'énergie sur le long terme."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Monte Carlo ?",
+    "output": "Une méthode numérique utilisant des tirages aléatoires pour estimer des intégrales ou résoudre des problèmes probabilistes."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Black-Scholes ?",
+    "output": "Une EDP parabolique utilisée en finance pour modéliser le prix des options."
+  },
+  {
+    "instruction": "Qu'est-ce que la réduction de modèle (POD/ROM) ?",
+    "output": "Technique pour remplacer un système de grande dimension par un modèle beaucoup plus petit capturant l'essentiel de la dynamique."
+  },
+  {
+    "instruction": "Qu'est-ce que la décomposition aux valeurs propres (Eigendecomposition) ?",
+    "output": "La factorisation d'une matrice en vecteurs propres et valeurs propres, A = P D P^-1."
+  },
+  {
+    "instruction": "Qu'est-ce que la décomposition en valeurs singulières (SVD) ?",
+    "output": "Une généralisation de la décomposition aux valeurs propres pour les matrices rectangulaires, A = U Sigma V^T."
+  },
+  {
+    "instruction": "Qu'est-ce que le nombre de conditionnement ?",
+    "output": "Une mesure de la sensibilité de la solution d'un système linéaire aux perturbations des données."
+  },
+  {
+    "instruction": "Qu'est-ce que la stabilité au sens de Lyapunov ?",
+    "output": "Une solution d'équilibre est stable si toute trajectoire commençant assez près y reste pour toujours."
+  },
+  {
+    "instruction": "Qu'est-ce que la stabilité asymptotique ?",
+    "output": "Une solution est asymptotiquement stable si elle est stable et que les trajectoires voisines convergent vers elle."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un attracteur ?",
+    "output": "Un ensemble vers lequel évolue un système dynamique après un temps suffisamment long."
+  },
+  {
+    "instruction": "Qu'est-ce que le chaos déterministe ?",
+    "output": "Un comportement imprévisible à long terme dans un système déterministe, dû à une extrême sensibilité aux conditions initiales."
+  },
+  {
+    "instruction": "Qu'est-ce que l'exposant de Lyapunov ?",
+    "output": "Une quantité mesurant la vitesse de divergence exponentielle des trajectoires voisines (signature du chaos)."
+  },
+  {
+    "instruction": "Qu'est-ce que la bifurcation ?",
+    "output": "Un changement qualitatif soudain du comportement d'un système dynamique lorsqu'un paramètre varie."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation logistique ?",
+    "output": "Un modèle simple de croissance de population avec saturation, pouvant exhiber du chaos en temps discret."
+  },
+  {
+    "instruction": "Qu'est-ce que la fractale ?",
+    "output": "Un objet géométrique présentant une structure similaire à toutes les échelles (auto-similarité)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'interpolation de Lagrange ?",
+    "output": "La construction d'un polynôme unique de degré n passant par n+1 points donnés."
+  },
+  {
+    "instruction": "Qu'est-ce que le phénomène de Runge ?",
+    "output": "L'oscillation importante des polynômes d'interpolation de haut degré aux bords de l'intervalle avec des nœuds équidistants."
+  },
+  {
+    "instruction": "Qu'est-ce que l'interpolation par splines cubiques ?",
+    "output": "L'utilisation de polynômes de degré 3 par morceaux, raccordés deux fois continûment dérivables, pour éviter le phénomène de Runge."
+  },
+  {
+    "instruction": "Qu'est-ce que la quadrature de Gauss ?",
+    "output": "Une méthode d'intégration numérique choisissant optimalement les nœuds et poids pour intégrer exactement des polynômes de degré élevé."
+  },
+  {
+    "instruction": "Qu'est-ce que Inégalité de Hölder1 ?",
+    "output": "Proposition 1.5 : (Inégalité de Hölder1).Soientp∈[1,∞],q∈[1,∞]tels que1 p+1 q= 1, alors /bardblfg/bardbl1≤/bardblf/bardblp/bardblg/bardblq,∀f∈Lp(R),g∈Lq(R). Proof.Laissée en exercice. Attention, ce n’est pas trivial !"
+  },
+  {
+    "instruction": "Qu'est-ce que L’espaceL2 ?",
+    "output": "Théorème 1.6 : (L’espaceL2).L’espaceL2, muni du produit scalaire /angbracketleftf,g/angbracketright:=/integraldisplay Rfg,∀f,g∈L2(R), est unespace de Hilbert . Proof.Le fait que ce soit un espace de Banach découle directement du"
+  },
+  {
+    "instruction": "Qu'est-ce que EspaceL1 /lscriptoc(R ?",
+    "output": "Définition 1.5 : (EspaceL1 /lscriptoc(R)).On définit l’ espace des fonctions localement intégrables , leC- espace vectoriel suivant L1 /lscriptoc(R) :=/braceleftbigg f:R→C|∀I⊂R,Icompact,/integraldisplay I|f(x)|dx<∞/bracerightbigg . La"
+  },
+  {
+    "instruction": "Qu'est-ce que Fonctions test ?",
+    "output": "Définition 1.6 : (Fonctions test) .SoitΩun domaine. On note D(Ω)l’espace vectoriel des fonctions C∞(Ω)à support compact dans Ω. Les éléments de cet ensemble sont appelés les fonctions test ."
+  },
+  {
+    "instruction": "Qu'est-ce que Intégrabilité contre des fonctions test ?",
+    "output": "Théorème 1.10 : (Intégrabilité contre des fonctions test) .Soient Ωun domaine et f∈L1 /lscriptoc(Ω), alors pour toute fonction test ϕ∈D(Ω), le produit fϕest intégrable. Proof.Soitϕ∈D(Ω)etKle support (compact) de ϕ. Alors /integraldisplay Ω|f(x)ϕ(x)|dx=/integraldisplay K|f(x)ϕ(x)|dx≤sup y∈K|ϕ(y)|/integraldisplay K|f(x)|dx<∞, la dernière inégalité provenant de la"
+  },
+  {
+    "instruction": "Qu'est-ce que Dérivée faible ?",
+    "output": "Définition 1.8 : (Dérivée faible) .Soient Ω⊂Run domaine et f∈L1 /lscriptoc(Ω), on définit la dérivée faible defsurΩ, notée∂ ∂xjTf, pourj= 1,···,N, par /angbracketleftbigg∂ ∂xjTf,ϕ/angbracketrightbigg D/prime,D:=−/integraldisplay Ωf(x)∂ ∂xjϕ(x)dx,∀ϕ∈D(Ω). La"
+  },
+  {
+    "instruction": "Qu'est-ce que Espace de Sobolev3H1(Ω ?",
+    "output": "Définition 1.9 : (Espace de Sobolev3H1(Ω)).SoitΩ⊂Run domaine. On définit l’ espace de Sobolev H1(Ω) :=/braceleftbigg f∈L2(Ω)|∂ ∂xjf∈L2(Ω),∀j∈[ [1,N] ]/bracerightbigg ."
+  },
+  {
+    "instruction": "Qu'est-ce que Produit scalaire et norme H1 ?",
+    "output": "Proposition 1.13 : (Produit scalaire et norme H1).Muni du produit scalaire /angbracketleftf,g/angbracketrightH1:=/integraldisplay Ωfg+N/summationdisplay j=1/integraldisplay Ω∂ ∂xjf∂ ∂xjg,∀f,g∈H1(Ω), H1(Ω)est unespace de Hilbert . Proof.Le fait que/angbracketleft·,·/angbracketrightH1soit un produit scalaire est laissé en exercice. Il suﬃt alors de montrer queH1est complet pour la norme issue de ce produit scalaire, i.e. /bardblf/bardblH1:=/angbracketleftf,f/angbracketright1 2 H1= /integraldisplay Ω|f|2+N/summationdisplay j=1/integraldisplay Ω/vextendsingle/vextendsingle/vextendsingle/vextendsingle∂ ∂xjf/vextendsingle/vextendsingle/vextendsingle/vextendsingle2 1 2 ,∀f∈H1(Ω). Soit une suite de Cauchy (fn)n∈NdeH1(Ω)pour cette norme. Alors en particulier pour tout ε>0, il existe un entier Nε∈Ntel que /bardblfn−fm/bardbl2 H1=/bardblfn−fm/bardbl2 L2+N/summationdisplay j=1/vextenddouble/vextenddouble/vextenddouble/vextenddouble∂ ∂xjfn−∂ ∂xjfm/vextenddouble/vextenddouble/vextenddouble/vextenddouble2 L2≤ε,∀n,m>N ε. Autrement dit, les suites (fn)n∈Net/parenleftbigg∂ ∂xjfn/parenrightbigg n∈N, pour tout j∈[ [1,N] ], sont également de Cauchy dansL2(Ω), qui est complet. Il existe donc N+ 1fonctionsfetgj,j∈[ [1,N] ], deL2(Ω), limites respectives de ces suites. Il reste alors à montrer que∂ ∂xjf=gj(au sens faible) pour tout j∈[ [1,N] ]. On a pour tout ϕ∈D(Ω) /integraldisplay Ω∂ ∂xjfn(x)ϕ(x)dx:=−/integraldisplay Ωfn(x)∂ ∂xjϕ(x)dx,∀n∈N,j∈[ [1,N] ]. Pour toutϕ∈D(Ω), l’inégalité de Cauchy-Schwarz (8.1) permet de passer à la limite sous les intégrales et d’obtenir /integraldisplay Ωgj(x)ϕ(x)dx=−/integraldisplay Ωf(x)∂ ∂xjϕ(x)dx,∀ϕ∈D(Ω),j∈[ [1,N] ], d’où le résultat."
+  },
+  {
+    "instruction": "Qu'est-ce que L’espaceH1 0(Ω ?",
+    "output": "Définition 1.10 : (L’espaceH1 0(Ω)).On définit l’espace H1 0(Ω) :=D(Ω), la complétion étant prise par rapport à la norme H1."
+  },
+  {
+    "instruction": "Donne un exemple de schéma implicite mentionné dans le cours.",
+    "output": "donnée au paragraphe précédent. La connaissance du vecteur initial U0permet donc de construire la solution de “proche en proche”. Pour évaluer la dérivée temporelle, nous aurions aussi pu utiliser le schéma retardé, en posant ∂u ∂t(j∆x,n∆t)~un j−un−1 j ∆t, en gardant la même expression pour∂2 ∂x2u. Ceci conduit alors au schéma un j−un−1 j ∆t−un j+1−2un j+un j−1 ∆x2=fn j, ou encore, en “décalant” d’un cran tous les indices n un+1 j−un j ∆t−un+1 j+1−2un+1 j+un+1 j−1 ∆x2=fn+1 j. (2.4) Ce schéma s’appelle schéma d’Euler implicite . Exercice 2.2 (Mise en oeuvre du schéma d’Euler implicite) . Vérifier que le vecteur Un+1de composantes un+1 jse calcule à partir du vecteur Unen résolvant un système linéaire que l’on explicitera."
+  },
+  {
+    "instruction": "Qu'est-ce que StabilitéL2 ?",
+    "output": "Définition 2.2 : (StabilitéL2).On dira qu’un schéma numérique est asymptotiquement stableL2 s’il existe un réel strictement positif Cindépendant de ∆tet∆xtel que pour tout entier n, on ait /bardblun/bardbl/lscript2(Z)≤C/vextenddouble/vextenddoubleu0/vextenddouble/vextenddouble /lscript2(Z), oùu0est la suite construite à partir de la condition initiale, le rapport∆t ∆xrestant fixe. Cette inégalité signifie que, “moralement”, l’énergie du système à l’instant nest bornée par celle du système à l’instant initial, donc qu’il n’y a pas (trop) d’apport d’énergie au cours du processus. Physiquement, ceci n’aurait pas de sens si l’on garde le terme source dans l’équation de départ, c’est pourquoi les études de stabilité sont faites avec un second membre pris égal à 0 . Ensuite, l’idée est d’utiliser la transformation de Fourier en espace discret, qui “préserve la norme L2”. Pour cela, nous allons construire à partir de la suite des u/lscript j, une fonction notée/hatwideu/lscript(λ)définie pourλ∈¯I, avecI=/bracketrightbigg −1 2,+1 2/bracketleftbigg , par /hatwideu/lscript(λ) =/summationdisplay ju/lscript je−2iπλj, expression qui a bien un sens puisque seul un nombre fini de coeﬃcients u/lscript jest non nul. De plus, cette fonction, étant continue sur ¯I, est de carré intégrable. On admettra le résultat suivant (qui est une forme d’identité de Parseval1) u/lscript∈/lscript2(Z)⇐⇒/hatwideu/lscript(λ)∈L2(I)et/vextenddouble/vextenddoubleu/lscript/vextenddouble/vextenddouble /lscript2(Z)=/vextenddouble/vextenddouble/vextenddouble/hatwideu/lscript(λ)/vextenddouble/vextenddouble/vextenddouble L2(I). Considérons maintenant le schéma générique à un pas suivant k/summationdisplay m=−kαmun+1 j+m=/lscript/summationdisplay m=−/lscriptβmun j+m, (2.5) qui inclut les schémas d’Euler (2.3) et (2.4) rencontrés plus haut. En eﬀet, n’oublions pas que l’on a pris le second membre fnul dans cette étude et que l’on a prolongé ul^par 0 (u/lscript j= 0dès quej∆x n’appartient plus à Ω). En multipliant (2.5) des deux côtés par exp (−2iπλj), il vient k/summationdisplay m=−kαmun+1 j+me−2iπλj=k/summationdisplay m=−k/parenleftbig αme2iπλm/parenrightbig un+1 j+me−2iπλ(j+m), =/lscript/summationdisplay m=−/lscript/parenleftbig βme2iπλm/parenrightbig un j+me−2iπλ(j+m), =/lscript/summationdisplay m=−/lscriptβmun j+me−2iπλj. 1Marc-Antoine Parseval des Chênes, né le 27 avril 1755 à Rosières-aux-Salines et mort le 16 août 1836, est un mathématicien français, célèbre pour les travaux connus sous le nom d’égalité de Parseval, qui est une formule fondamentale de la théorie des séries de Fourier. 21 CHAPTER 2. MÉTHODES DES DIFFÉRENCES FINIES Puis en sommant sur j∈Z, en permutant les sommations et en remarquant que, par translation /summationdisplay j∈Zul j+me−2iπλ(j+m)=/summationdisplay j∈Zul je−2iπλj=/hatwideu/lscript(λ), pour/lscriptégal ànoun+ 1, il vient /parenleftBiggk/summationdisplay m=−kαme2iπλm/parenrightBigg [un+1(λ) =/parenleftBigg/lscript/summationdisplay m=−lβme2iπλm/parenrightBigg /hatwiderun(λ), on obtient [un+1(λ) =/lscript/summationdisplay m=−/lscriptβme2iπλm k/summationdisplay m=−kαme2iπλm/hatwiderun(λ) =:g(λ,∆t,∆x)/hatwiderun(λ). (2.6) Dans la domaine de Fourier, une itération correspond à la multiplication par le terme d’amplification notég(λ,∆t,∆x). Par récurrence immédiate, il est clair que /hatwiderun(λ) = (g(ξ,∆t,∆x))n/hatwideru0(λ). L’application de l’identité de Parseval entraîne le résultat suivant :"
+  },
+  {
+    "instruction": "Qu'est-ce que Solution faible ?",
+    "output": "Définition 3.1 : (Solution faible) .On dira que uest solution faible de l’équation d’advection (3.7) munie de la donnée initiale u(0,x) =u0(x)si et seulement si u∈L1 /lscriptoc/parenleftbig R+×RN/parenrightbig etusatisfait (3.8)."
+  },
+  {
+    "instruction": "Qu'est-ce que Vitesse du choc ?",
+    "output": "Définition 3.4 : (Vitesse du choc) .On appelle x/prime(t)lavitesse du choc . Nous allons maintenant caractériser les solutions faibles du problème de Cauchy (3.10) qui sont C1 par morceaux. Soit uune solution C1par morceaux de (3.11) et soit Ω⊂R∗ +×Run ouvert qui ne rencontre pas de courbes de choc. Alors uestC1surΩ. Alors pour tout ϕ∈D(Ω), on a /integraldisplay Ω/bracketleftbigg u(t,x)∂ ∂tϕ(t,x) +f(u(t,x))∂ ∂xϕ(t,x)/bracketrightbigg dxdt = 0, soit après intégration par parties /integraldisplay Ω/bracketleftbigg∂ ∂tu(t,x) +∂ ∂xf(u(t,x))/bracketrightbigg ϕ(t,x)dxdt = 0. 40 3.5. ÉQUATIONS SCALAIRES HYPERBOLIQUES NON LINÉAIRES 1D Par le"
+  },
+  {
+    "instruction": "Qu'est-ce que Relation de Rankine-Hugoniot ?",
+    "output": "Théorème 3.2 : (Relation de Rankine-Hugoniot) .Siu,C1par morceaux, est solution faible de (3.10), alorsuest solution forte en dehors des lignes de choc et sur les lignes de choc, elle vérifie la relation de Rankine-Hugoniot [ [f(u(t,x(t)))] ]Σ=d dtx(t)[ [u(t,x(t))] ]Σ,∀(t,x(t))∈Σ, (3.13) où[ [g(x)] ]Σdésigne le sautde la fonction g, c’est-à-dire [ [g(x)] ]Σ:= lim x→Σ,x>Σg(x)− lim x→Σ,x<Σg(x). 41 CHAPTER 3. THÉORIE DES ÉQUATIONS HYPERBOLIQUES Proof.Il suﬃt de repartir de (3.12) sous la forme [ [f(u(t,x(t)))] ]Σ=−nt nx[ [u(t,x(t))] ]Σ,∀(t,x(t))∈Σ, et de montrer que d dtx(t) =−nt nx, ce qui découle directement du"
+  },
+  {
+    "instruction": "Qu'est-ce que Divergence et gradient ?",
+    "output": "Définition 5.1 : (Divergence et gradient) . •Pour tout champ de vecteur vde composantes vi, l’opérateur divergence est le champ scalaire défini par : divv=∂v1 ∂x1+...+∂vN ∂xN=N/summationdisplay i=1∂vi ∂xi. (5.2) •Pour tout champ scalaire u, l’opérateur gradient est le champ de vecteurs défini par : ∇u= ∂u ∂x1 ... ∂u ∂xN  (5.3) 69 CHAPTER 5. FORMULATIONS VARIATIONNELLES On"
+  },
+  {
+    "instruction": "Qu'est-ce que Produit scalaire et norme dans H1(Ω ?",
+    "output": "Définition 5.5 : (Produit scalaire et norme dans H1(Ω)). Le produit scalaire de deux fonctions uetvdeH1(Ω)est défini par : /angbracketleftu,v/angbracketright1=/integraldisplay Ω∇u·∇vdx+/integraldisplay Ωuvdx =/integraldisplay ΩN/summationdisplay i=1Du DxiDv Dxidx+/integraldisplay Ωuvdx. (5.21) La norme associée pour une fonction udeH1(Ω)s’écrit alors : /bardblu/bardbl1=/radicalBig /angbracketleftu,u/angbracketright1=/parenleftbigg/integraldisplay Ω∇u·∇udx+/integraldisplay Ωu2dx/parenrightbigg1/2 . (5.22) On définit également la semi-norme H1d’une fonction udeH1(Ω)par : |u|1=/parenleftbigg/integraldisplay Ω∇u·∇udx/parenrightbigg1/2 =/bardbl∇u/bardbl0. (5.23)"
+  },
+  {
+    "instruction": "Qu'est-ce que Opérateur trace ?",
+    "output": "Définition 5.6 : (Opérateur trace) . Soit Ωun ouvert de RNde frontière notée Γ. On appelle trace l’application, notée γ0, qui a une fonctionudeC1(Ω)associe sa restriction sur Γ, qui est dans C0(Γ). On a donc : γ0u(x) =u(x)pour tout x∈Γ. Il est facile de voir que la trace est linéaire et nous allons en étudier les"
+  },
+  {
+    "instruction": "Qu'est-ce que Inégalité de Poincaré ?",
+    "output": "Théorème 5.9 : (Inégalité de Poincaré) . SoitΩun ouvert borné de RN. Alors, il existe une constante Cstrictement positive et qui ne dépend que de Ωtelle que : ∀u∈H1 0(Ω),/bardblu/bardbl0≤C|u|1=C/bardbl∇u/bardbl0. (5.28) Proof.Commençons par montrer en quoi l’inégalité de Poincaré conduit à (5.27). On a : /bardblu/bardbl2 1=/bardblu/bardbl2 0+|u|2 1≤C2|u|2 1+|u|2 1≤(C2+ 1)|u|2 1, et la constante αvaut1√ C2+ 1. La densité deD(Ω)dansH1 0(Ω)permet de ne faire la démonstration que pour des fonctions de D(Ω). Une fois le résultat établi pour ces fonctions, on raisonne par densité. Soit donc uune fonction de D(Ω).uétantC∞à support compact dans Ω, on peut la prolonger par 0en une fonction C∞(RN). 80 5.7. ESPACE /tildewideH1 0(Ω) Par abus, nous noterons encore uce prolongement. De plus, Ωétant borné, il existe deux réels aetbtels que pour tout point x= (x1,...,xN)deΩ, on ait :a≤xN≤b. Dans la suite, pour alléger les notations, nous désignerons par x/primelesN−1premières composantes de x,i.e.que l’on a : x= (x/prime,xN). Alors, comme uest de classe C1, on a : u(x/prime,xN) =u(x/prime,a) +/integraldisplayxN a∂u ∂xN(x/prime,t)dt=/integraldisplayxN a∂u ∂xN(x/prime,t)dt, puisqueuest nulle dès que xN≤a. On en déduit donc que : [u(x/prime,xN)]2=/parenleftbigg/integraldisplayxN a1·∂u ∂xN(x/prime,t)dt/parenrightbigg2 ≤(xN−a)/integraldisplayxN a/parenleftbigg∂u ∂xN(x/prime,t)/parenrightbigg2 dt(inégalité de Cauchy-Schwarz) puis en intégrant sur les N−1variablesx/prime, il vient : /integraldisplay RN−1[u(x/prime,xN)]2dx/prime≤(xN−a)/integraldisplay RN/parenleftbigg∂u ∂xN/parenrightbigg2 dx. Enfin, on intégre en xNsur son intervalle de variation, i.e.[a,b], et on trouve : /integraldisplayb a/integraldisplay RN−1[u(x/prime,xN)]2dx/primedxN=/integraldisplay RN[u(x)]2dx≤(b−a)2 2/integraldisplay RN/parenleftbigg∂u ∂xN/parenrightbigg2 dx, ce qui entraîne : /bardblu/bardbl2 0≤(b−a)2 2/vextenddouble/vextenddouble/vextenddouble/vextenddouble∂u ∂xN/vextenddouble/vextenddouble/vextenddouble/vextenddouble2 0≤(b−a)2 2/bardbl∇u/bardbl2 0, et le résultat avec C=b−a√ 2qui dépend bien du domaine Ω."
+  },
+  {
+    "instruction": "Qu'est-ce que Inégalité de Poincaré généralisée ?",
+    "output": "Théorème 5.12 : (Inégalité de Poincaré généralisée) . SoitΩun ouvert borné connexe de RNde frontière suﬃsamment régulière et soit Γ1une partie de Γde mesure non nulle. Alors, il existe une constante Cstrictement positive telle que : ∀u∈/tildewideH1 0(Ω),/bardblu/bardbl0≤C|u|1=C/bardbl∇u/bardbl0. (5.31) 5.8 Retour sur l’équation de la chaleur Nous avons maintenant tous les outils nécessaires à l’étude de l’équation de la chaleur. Dans ce qui va suivre et qui sera fait sous forme d’exercice, nous allons nous placer dans un cas un peu plus général, l’adaptation à l’équation de la chaleur étant triviale. Soit Ωun ouvert borné connexe de RNde frontière suﬃsamment régulière. On cherche un champ scalaireu, défini sur Ω, solution de l’équation aux dérivées partielles suivante : −div(k∇u) +αu=fsur Ω, oùk,αetfsont les données physiques du problème. On rappelle par"
+  },
+  {
+    "instruction": "Qu'est-ce que Interprétation géométrique des coordonnées barycentriques. ?",
+    "output": "Remarque 6.6 : (Interprétation géométrique des coordonnées barycentriques.) . SoitSi,SjetSkles trois sommets d’un triangle KetMun point quelconque intérieur à ce triangle. En notantxetyles coordonnées du point M, il est facile de voir que : |MSjSk| |K|=1 2|K|/bardblSjSk∧SjM/bardbl, 97 CHAPTER 6. MÉTHODES DES ÉLÉMENTS FINIS est un polynôme de degré 1 en xety, qui est nul si M=SjouM=Sket vaut 1 si M=Si. Or il existe un seul polynôme de degré 1 nul en SjetSket valant 1 en Si: c’estλi. Par conséquent, la valeur au point Mde la fonction coordonnée barycentrique associée au sommet Siest égale au rapport de l’aire du triangle MSjSkdivisée par celle de K: λi(M) =|MSjSk| |K|. On en déduit en particulier que le centre de gravité, noté G, d’un triangle permettant de découper celui-ci en 3 sous-triangles de surface égale, on a : λi(G) =1 3pour touti. Voir la Figure 6.5.9. ••• S1S2S3 •••M λ3(M) Figure 6.5.9 – Interprétation géométrique des coordonnées barycentriques. 6.5.2 Quelques formules d’intégration numérique sur les triangles. SoitKun triangle quelconque de sommets S1,S2etS3. On noteM1,M2etM3les milieux de ses côtés,Gson centre de gravité et |K|sa surface. De même, λ1,λ2etλ3désignent les trois fonctions de base P1, introduites dans la section précédente. Nous admettrons la formule suivante : /integraldisplay Kλα 1λβ 2λγ 3dx= 2|K|α!β!γ! (α+β+γ+ 2)!, (6.7) pour tout triangle Ket pour tous entiers positifs ou nuls α,βetγ. De plus, nous adoptons la convention usuelle : 0! = 1. D’autre part, nous admettrons également que les formules suivantes sont exactes si la fonction φest un polynôme P1: /integraldisplay Kφ(x)dx=|K|φ(G) (6.8) /integraldisplay Kφ(x)dx=|K| 3{φ(S1) +φ(S2) +φ(S3)}, (6.9) de même que la formule suivante : /integraldisplay Kφ(x)dx=|K| 3{φ(M1) +φ(M2) +φ(M3)}, (6.10) est exacte lorsque φest un polynôme P2(on pourrait démontrer ces trois formules en utilisant (6.7)). 98 6.5."
+  },
+  {
+    "instruction": "Qu'est-ce que Prise en compte d’un chargement ponctuel. ?",
+    "output": "Remarque 6.8 : (Prise en compte d’un chargement ponctuel.) . Bien que ne rentrant pas dans le cadre mathématique esquissé au Chapitre 5, il arrive souvent que l’on applique une force ponctuelle sur une structure. On notera que ceci correspond à un modèle, très simple à utiliser, mais qui n’existe pas dans la réalité “physique” : au mieux, une charge ponctuelle correspondàunepressions’exerçantsurunetrèspetitesurface.Enpratique,unchargementponctuel est modélisé à l’aide de la distribution de Dirac (qui n’est donc pas un élément de L2(Ω)...) et se traduit par l’ajout à la forme linéaire ld’un terme : l+(v) =F0v(x0,y0), oùF0est l’intensité de la force appliquée au point de coordonnées (x0,y0). Numériquement, pour prendre en compte un tel chargement, il est nécessaire que le point d’application de la force fasse partie des noeuds du maillage : soit Si0ce noeud. Comme toutes les fonctions de base de Vhsont nulles en ce point sauf celle qui lui est associé, la prise en compte de ce chargement au niveau de l’assemblage du second membre se traduit simplement par l’opération suivante : LSi0:=LSi0+F0, qu’il faudrait exécuter autant de fois qu’il y a de forces ponctuelles... 6.5.5 Prise en compte des conditions aux limites de Dirichlet On a fait plusieurs fois"
+  },
+  {
+    "instruction": "Qu'est-ce que Espace vectoriel sur K ?",
+    "output": "Définition 8.1 : (Espace vectoriel sur K).SoitKun corps commutatif (typiquement RouC). On appelleespace vectoriel sur K,ouK-espace vectoriel ,ladonnéed’unensemble Emunide2opérations 1)Une opération linéaire interne, appeléeaddition , notée “ +” + :E×E−→E (u,v)/mapsto→u+v vérifiant les axiomes d’un groupe abélien, c’est-à-dire G1associativité : ∀u,v,w∈E, (u+v) +w=u+ (v+w) G2élément neutre : ∃0∈E,∀u∈E, 0 +u=u+ 0 =u G3opposé :∀u∈E,∃−u∈E, u + (−u) = (−u) +u= 0 G4commutativité : ∀u,v∈E, u +v=v+u 2)Une opération externe, appeléemultiplication par un scalaire sans symbole :K×E−→E (λ,v)/mapsto→λu vérifiant EV1distributivité vectorielle : ∀λ∈K,u,v∈E, λ (u+v) =λu+λv EV2distributivité scalaire : ∀λ,µ∈K,u∈E, (λ+µ)u=λu+µu EV3associativité scalaire : ∀λ,µ∈K,u∈E, λ (µu) = (λµ)u EV4normalisation : ∀u∈E, 1u=u Les éléments de Es’appellent des vecteurs."
+  },
+  {
+    "instruction": "Qu'est-ce que Produit scalaire ?",
+    "output": "Définition 8.2 : (Produit scalaire) .SoientEun espace vectoriel sur Ret /angbracketleft·,·/angbracketright:E×E−→ R (u,v)/mapsto→ /angbracketleftu,v/angbracketright une forme ( formesignifie simplement que l’espace d’arrivée est le corps des scalaires). On dit que /angbracketleft·,·/angbracketrightest unproduit scalaire surEsi et seulement si PS1bilinéarité :/angbracketleft·,·/angbracketrightest linéaire en chacune de ses variables, i.e.pour toutu,v,w∈Eet tout scalaireλ,µ∈R, on a /angbracketleftλu+µv,w/angbracketright=λ/angbracketleftu,w/angbracketright+µ/angbracketleftv,w/angbracketrightet/angbracketleftu,λv +µw/angbracketright=λ/angbracketleftu,v/angbracketright+µ/angbracketleftu,w/angbracketright. PS2symétrie : pour toutu,v∈E,/angbracketleftu,v/angbracketright=/angbracketleftv,u/angbracketright, PS3"
+  },
+  {
+    "instruction": "Qu'est-ce que Produit hermitien ?",
+    "output": "Définition 8.3 : (Produit hermitien) .SoientEun espace vectoriel sur Ret /angbracketleft·,·/angbracketright:E×E−→ C (u,v)/mapsto→ /angbracketleftu,v/angbracketright une forme. On dira que /angbracketleft·,·/angbracketrightest unproduit hermitien surEsi et seulement si PH1linéarité, anti-linéarité : /angbracketleft·,·/angbracketrightest linéaire en sa première variable et anti-linéaire en sa seconde variable, i.e.pour toutu,v,w∈Eet tout scalaire λ,µ∈C, on a /angbracketleftλu+µv,w/angbracketright=λ/angbracketleftu,w/angbracketright+µ/angbracketleftv,w/angbracketrightet/angbracketleftu,λv +µw/angbracketright=λ/angbracketleftu,v/angbracketright+µ/angbracketleftu,w/angbracketright. PH2anti-symétrie : pour toutu,v∈E,/angbracketleftu,v/angbracketright=/angbracketleftv,u/angbracketright, PH3"
+  },
+  {
+    "instruction": "Explique le principe du schéma de Crank-Nicolson.",
+    "output": "C'est un schéma de résolution d'EDP paraboliques (comme la chaleur), implicite, d'ordre 2 en temps et en espace, inconditionnellement stable."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une erreur de troncature locale ?",
+    "output": "C'est l'erreur commise par le schéma numérique sur un seul pas de temps, supposant que la solution au pas précédent était exacte."
+  },
+  {
+    "instruction": "Quelle est la différence entre erreur locale et erreur globale ?",
+    "output": "L'erreur locale est l'erreur sur un pas, l'erreur globale est l'accumulation de ces erreurs sur tout l'intervalle de temps."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un problème bien posé au sens de Hadamard ?",
+    "output": "Un problème est bien posé si une solution existe, est unique, et dépend continûment des données initiales."
+  },
+  {
+    "instruction": "Pourquoi l'équation de la chaleur a-t-elle un effet régularisant ?",
+    "output": "Parce que la solution devient instantanément C-infini pour t > 0, même si la donnée initiale est discontinue."
+  },
+  {
+    "instruction": "Qu'est-ce que la vitesse de propagation finie dans l'équation des ondes ?",
+    "output": "Une perturbation à l'instant t=0 en un point x0 n'affectera le point x qu'après un temps t >= |x-x0|/c."
+  },
+  {
+    "instruction": "Qu'est-ce que le domaine de dépendance ?",
+    "output": "Pour un point (x,t), c'est l'ensemble des points initiaux qui peuvent influencer la valeur de la solution en (x,t)."
+  },
+  {
+    "instruction": "Qu'est-ce qu'une condition aux limites de Robin ?",
+    "output": "C'est une condition mixte qui lie la valeur de la fonction et sa dérivée normale sur le bord : alpha u + beta du/dn = g."
+  },
+  {
+    "instruction": "Qu'est-ce que le pas de temps critique ?",
+    "output": "Dans un schéma explicite conditionnellement stable, c'est la valeur maximale du pas de temps delta_t pour laquelle le schéma reste stable."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode des caractéristiques ?",
+    "output": "Une méthode pour résoudre les EDP hyperboliques du premier ordre en suivant les courbes le long desquelles l'EDP se réduit à une EDO."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un choc de raréfaction ?",
+    "output": "Un type de discontinuité non physique qui viole la condition d'entropie (la densité diminue à travers le choc), souvent exclu par les bons schémas."
+  },
+  {
+    "instruction": "Qu'est-ce que le flux de Godunov ?",
+    "output": "C'est le flux numérique obtenu en résolvant exactement le problème de Riemann aux interfaces entre cellules."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de capture de choc ?",
+    "output": "Une méthode numérique capable de représenter des discontinuités (chocs) sans avoir à les suivre explicitement par maillage mobile."
+  },
+  {
+    "instruction": "Qu'est-ce que l'ordre de convergence d'une méthode FEM ?",
+    "output": "C'est la vitesse à laquelle l'erreur ||u - u_h|| tend vers 0 en fonction de la taille h du maillage (ex: O(h^2) pour P1 en norme L2)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'assemblage de la matrice de rigidité ?",
+    "output": "Le processus consistant à parcourir tous les éléments du maillage pour ajouter leurs contributions locales à la matrice globale du système."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un nœud esclave (ou pendant) ?",
+    "output": "Dans un maillage avec raffinement local (non conforme), c'est un nœud situé au milieu d'une arête d'un élément voisin plus grand."
+  },
+  {
+    "instruction": "Qu'est-ce que la triangulation de Delaunay ?",
+    "output": "Une triangulation telle que le cercle circonscrit à chaque triangle ne contient aucun autre sommet du maillage. Elle maximise les angles minimaux."
+  },
+  {
+    "instruction": "Pourquoi préfère-t-on les triangles 'bien formés' en FEM ?",
+    "output": "Parce que les triangles très plats (angles proches de 0 ou 180) dégradent le conditionnement de la matrice et la précision de l'interpolation."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Galerkin discontinue (DG) ?",
+    "output": "Une méthode d'éléments finis où l'on n'impose pas la continuité de la solution entre les éléments, combinant flexibilité des volumes finis et précision des éléments finis."
+  },
+  {
+    "instruction": "Qu'est-ce que l'erreur a posteriori ?",
+    "output": "Une estimation de l'erreur calculée après avoir trouvé la solution numérique, souvent utilisée pour guider l'adaptation de maillage."
+  },
+  {
+    "instruction": "Qu'est-ce que l'adaptation de maillage h-adaptative ?",
+    "output": "Une technique où l'on divise ou fusionne des éléments du maillage là où l'erreur estimée est grande ou faible."
+  },
+  {
+    "instruction": "Qu'est-ce que l'adaptation p-adaptative ?",
+    "output": "Une technique où l'on augmente le degré polynomial des fonctions de forme sur certains éléments pour améliorer la précision."
+  },
+  {
+    "instruction": "Qu'est-ce que la matrice de préconditionnement Jacobi ?",
+    "output": "Une matrice diagonale contenant les inverses des éléments diagonaux de la matrice du système, utilisée pour accélérer la convergence."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode du gradient conjugué préconditionné (PCG) ?",
+    "output": "La version accélérée du gradient conjugué utilisant une matrice de préconditionnement pour réduire le nombre d'itérations."
+  },
+  {
+    "instruction": "Qu'est-ce que le stockage creux (Sparse matrix storage) ?",
+    "output": "Une méthode pour stocker uniquement les coefficients non nuls d'une matrice, essentielle pour les grands systèmes FEM."
+  },
+  {
+    "instruction": "Qu'est-ce que le format CSR (Compressed Sparse Row) ?",
+    "output": "Un format de stockage creux populaire utilisant trois tableaux : valeurs, indices de colonnes, et pointeurs de début de ligne."
+  },
+  {
+    "instruction": "Qu'est-ce que la factorisation de Cholesky ?",
+    "output": "Une méthode directe pour résoudre Ax=b quand A est symétrique définie positive, en écrivant A = L L^T."
+  },
+  {
+    "instruction": "Qu'est-ce que la factorisation LU ?",
+    "output": "Une méthode directe pour résoudre Ax=b en écrivant A = L U (Lower, Upper triangular)."
+  },
+  {
+    "instruction": "Quelle est la complexité de la résolution d'un système triangulaire ?",
+    "output": "O(N^2) en général, mais O(N) pour les matrices bandes ou très creuses typiques des EDP 1D."
+  },
+  {
+    "instruction": "Qu'est-ce que le phénomène de Gibbs ?",
+    "output": "Des oscillations parasites apparaissant près d'une discontinuité lorsqu'on l'approxime par une série de Fourier tronquée ou un schéma d'ordre élevé."
+  },
+  {
+    "instruction": "Qu'est-ce que la transformée de Fourier Discrète (DFT) ?",
+    "output": "L'équivalent discret de la transformée de Fourier, transformant une séquence de N points temporels en N points fréquentiels."
+  },
+  {
+    "instruction": "Qu'est-ce que la FFT (Fast Fourier Transform) ?",
+    "output": "Un algorithme rapide pour calculer la DFT en O(N log N) opérations au lieu de O(N^2)."
+  },
+  {
+    "instruction": "Qu'est-ce que le repliement de spectre (Aliasing) ?",
+    "output": "Un artefact où les hautes fréquences sont mal interprétées comme des basses fréquences lors de l'échantillonnage."
+  },
+  {
+    "instruction": "Qu'est-ce que la fréquence de Nyquist ?",
+    "output": "La fréquence maximale qu'on peut représenter correctement avec un taux d'échantillonnage donné (moitié de la fréquence d'échantillonnage)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation d'Euler pour les fluides ?",
+    "output": "L'équation de conservation de la quantité de mouvement pour un fluide non visqueux."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Navier-Stokes ?",
+    "output": "L'équation décrivant le mouvement des fluides visqueux, incluant les termes de convection, diffusion et pression."
+  },
+  {
+    "instruction": "Qu'est-ce que le nombre de Reynolds ?",
+    "output": "Un nombre adimensionnel (Re) mesurant le rapport entre forces d'inertie et forces visqueuses."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un écoulement laminaire ?",
+    "output": "Un écoulement ordonné, en couches parallèles, typique des faibles nombres de Reynolds."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un écoulement turbulent ?",
+    "output": "Un écoulement chaotique, avec tourbillons, typique des hauts nombres de Reynolds."
+  },
+  {
+    "instruction": "Qu'est-ce que la couche limite ?",
+    "output": "La fine zone près d'une paroi où les effets de viscosité sont dominants et la vitesse passe de 0 à la vitesse du flux libre."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode multipôle rapide (FMM) ?",
+    "output": "Un algorithme pour accélérer le calcul des interactions à longue portée (type gravitation ou électrostatique) en N corps."
+  },
+  {
+    "instruction": "Qu'est-ce que l'intégration symplectique ?",
+    "output": "Des schémas d'intégration temporelle qui préservent la structure géométrique (symplectique) des équations hamiltoniennes, assurant la conservation de l'énergie sur le long terme."
+  },
+  {
+    "instruction": "Qu'est-ce que la méthode de Monte Carlo ?",
+    "output": "Une méthode numérique utilisant des tirages aléatoires pour estimer des intégrales ou résoudre des problèmes probabilistes."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation de Black-Scholes ?",
+    "output": "Une EDP parabolique utilisée en finance pour modéliser le prix des options."
+  },
+  {
+    "instruction": "Qu'est-ce que la réduction de modèle (POD/ROM) ?",
+    "output": "Technique pour remplacer un système de grande dimension par un modèle beaucoup plus petit capturant l'essentiel de la dynamique."
+  },
+  {
+    "instruction": "Qu'est-ce que la décomposition aux valeurs propres (Eigendecomposition) ?",
+    "output": "La factorisation d'une matrice en vecteurs propres et valeurs propres, A = P D P^-1."
+  },
+  {
+    "instruction": "Qu'est-ce que la décomposition en valeurs singulières (SVD) ?",
+    "output": "Une généralisation de la décomposition aux valeurs propres pour les matrices rectangulaires, A = U Sigma V^T."
+  },
+  {
+    "instruction": "Qu'est-ce que le nombre de conditionnement ?",
+    "output": "Une mesure de la sensibilité de la solution d'un système linéaire aux perturbations des données."
+  },
+  {
+    "instruction": "Qu'est-ce que la stabilité au sens de Lyapunov ?",
+    "output": "Une solution d'équilibre est stable si toute trajectoire commençant assez près y reste pour toujours."
+  },
+  {
+    "instruction": "Qu'est-ce que la stabilité asymptotique ?",
+    "output": "Une solution est asymptotiquement stable si elle est stable et que les trajectoires voisines convergent vers elle."
+  },
+  {
+    "instruction": "Qu'est-ce qu'un attracteur ?",
+    "output": "Un ensemble vers lequel évolue un système dynamique après un temps suffisamment long."
+  },
+  {
+    "instruction": "Qu'est-ce que le chaos déterministe ?",
+    "output": "Un comportement imprévisible à long terme dans un système déterministe, dû à une extrême sensibilité aux conditions initiales."
+  },
+  {
+    "instruction": "Qu'est-ce que l'exposant de Lyapunov ?",
+    "output": "Une quantité mesurant la vitesse de divergence exponentielle des trajectoires voisines (signature du chaos)."
+  },
+  {
+    "instruction": "Qu'est-ce que la bifurcation ?",
+    "output": "Un changement qualitatif soudain du comportement d'un système dynamique lorsqu'un paramètre varie."
+  },
+  {
+    "instruction": "Qu'est-ce que l'équation logistique ?",
+    "output": "Un modèle simple de croissance de population avec saturation, pouvant exhiber du chaos en temps discret."
+  },
+  {
+    "instruction": "Qu'est-ce que la fractale ?",
+    "output": "Un objet géométrique présentant une structure similaire à toutes les échelles (auto-similarité)."
+  },
+  {
+    "instruction": "Qu'est-ce que l'interpolation de Lagrange ?",
+    "output": "La construction d'un polynôme unique de degré n passant par n+1 points donnés."
+  },
+  {
+    "instruction": "Qu'est-ce que le phénomène de Runge ?",
+    "output": "L'oscillation importante des polynômes d'interpolation de haut degré aux bords de l'intervalle avec des nœuds équidistants."
+  },
+  {
+    "instruction": "Qu'est-ce que l'interpolation par splines cubiques ?",
+    "output": "L'utilisation de polynômes de degré 3 par morceaux, raccordés deux fois continûment dérivables, pour éviter le phénomène de Runge."
+  },
+  {
+    "instruction": "Qu'est-ce que la quadrature de Gauss ?",
+    "output": "Une méthode d'intégration numérique choisissant optimalement les nœuds et poids pour intégrer exactement des polynômes de degré élevé."
+  }
+]
